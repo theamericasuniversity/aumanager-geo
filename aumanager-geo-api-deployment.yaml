@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aumanager-geo-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aumanager-geo-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
+  template:
+    metadata:
+      labels:
+        app: aumanager-geo-api
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: aumanager-geo-api
+        image: aucontainerregistry.azurecr.io/aumanager-geo:63
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aumanager-geo-api
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: aumanager-geo-api
