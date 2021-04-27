@@ -1,0 +1,30 @@
+#############################
+# Global variables          #
+#############################
+$SP_NAME="your-service-principal-name"
+$SP_PASSWORD="your-service-principal-password"
+$SP_TENANT="your-service-principal-tenant-id"
+$RG_NAME="your-resource-group-name"
+$LOCATION="yor-preferred-azure-region"
+$SERVICEPLAN_NAME="your-service-plan-name"
+
+#############################
+# Authenticating in Azure   #
+#############################
+
+# Loging into Azure through Service Principal: http://aumanager-sp
+az login --service-principal -u $SP_NAME -p $SP_PASSWORD --tenant $SP_TENANT
+
+#############################
+# Resource Group            #
+#############################
+
+# Creating a new Resource Group
+az group create -n $RG_NAME -l $LOCATION
+
+#############################
+# Service Plan creation     #
+#############################
+
+# Creating service plan
+az appservice plan create -n $SERVICEPLAN_NAME -l $LOCATION -g $RG_NAME --sku B1

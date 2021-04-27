@@ -1,0 +1,23 @@
+#############################
+# Global variables          #
+#############################
+$SP_NAME="your-service-principal-name"
+$SP_PASSWORD="your-service-principal-password"
+$SP_TENANT="your-service-principal-tenant-id"
+$RG_NAME="your-resource-group-name"
+$SERVICEPLAN_NAME="your-service-plan-name"
+$WEBAPP_NAME="your-webapp-name"
+
+#############################
+# Authenticating in Azure   #
+#############################
+
+# Loging into Azure through Service Principal: http://aumanager-sp
+az login --service-principal -u $SP_NAME -p $SP_PASSWORD --tenant $SP_TENANT
+
+###############################
+# Deploying aumanager-geo-api #
+###############################
+
+# Deploying aumanager-geo-api
+az webapp create -n $WEBAPP_NAME -g $RG_NAME -p $SERVICEPLAN_NAME

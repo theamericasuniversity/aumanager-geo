@@ -32,6 +32,7 @@ The application here described was developed considering the follow technologies
 
 Useful resources available for you to get started with the environment.
 
+* **WebApp's deployment script**: Azure CLI-based script for you to deploy the hosting for the service in Azure. ([Core Infrastructure](iac/deploy-core.azcli) | [WebApp](iac/deploy-webapp.azcli))
 * **Countries**: CSV file with all the countries in the World to populate "Countries" table in the database. ([Donwload](res/countries.csv))
 * **States**: CSV file with all the states in the World to populate "States" table in the database. ([Donwload](res/states.csv))
 * **Cities**: CSV file with all the cities in the World to populate "Cities" table in the database. ([Donwload](res/cities.csv)).
