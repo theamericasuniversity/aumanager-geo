@@ -17,7 +17,12 @@ namespace aumanager_geo.Controllers
     [ApiController]
     public class StatesController : ControllerBase
     {
-        private readonly StateRepository _repo = new StateRepository();
+        private readonly StateRepository _repo;
+
+        public StatesController(StateRepository repo)
+        {
+            _repo = repo;
+        }
 
         // GET: api/States
         [HttpGet]

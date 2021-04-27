@@ -18,6 +18,8 @@ using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
+using aumanager_geo_infra.Configuration;
+using aumanager_geo_infra.Repository;
 
 namespace aumanager_geo_api
 {
@@ -46,6 +48,11 @@ namespace aumanager_geo_api
                     Description = "Microservice who provides information related to Countries, States and Cities." 
                 });
             });
+
+            services.AddDbContext<GeoContext>();
+            services.AddScoped<CountryRepository>();
+            services.AddScoped<CityRepository>();
+            services.AddScoped<StateRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

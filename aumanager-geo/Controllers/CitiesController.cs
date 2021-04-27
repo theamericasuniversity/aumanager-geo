@@ -15,7 +15,12 @@ namespace aumanager_geo.Controllers
     [ApiController]
     public class CitiesController : ControllerBase
     {
-        private readonly CityRepository _repo = new CityRepository();
+        private readonly CityRepository _repo;
+
+        public CitiesController(CityRepository repo)
+        {
+            _repo = repo;
+        }
 
         // GET: api/Cities
         [HttpGet]

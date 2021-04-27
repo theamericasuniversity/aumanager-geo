@@ -16,8 +16,7 @@ namespace aumanager_geo_core.Models
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        public int PhoneCode { get; set; }
+        public string PhoneCode { get; set; }
 
         public ICollection<State> States { get; set; }
     }

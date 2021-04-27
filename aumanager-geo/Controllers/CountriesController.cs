@@ -16,7 +16,12 @@ namespace aumanager_geo_api.Controllers
     [ApiController]
     public class CountriesController : ControllerBase
     {
-        private readonly CountryRepository _repo = new CountryRepository();
+        private readonly CountryRepository _repo;
+
+        public CountriesController(CountryRepository repo)
+        {
+            _repo = repo;
+        }
 
         // GET: api/geo/Countries
         [HttpGet]

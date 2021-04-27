@@ -11,7 +11,12 @@ namespace aumanager_geo_infra.Repository
 {
     public class CityRepository
     {
-        private GeoContext _context = new GeoContext();
+        private GeoContext _context;
+
+        public CityRepository(GeoContext context) 
+        {
+            _context = context;
+        }
 
         public async Task<List<City>> GetCitiesRepository()
         {
