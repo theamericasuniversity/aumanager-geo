@@ -21,7 +21,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: aumanager-geo-api
-        image: aucontainerregistry.azurecr.io/aumanager-geo:63
+        image: your-container-registry-image
         ports:
         - containerPort: 80
         resources:
