@@ -21,7 +21,7 @@ jobs:
         
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: .\aumanager-geo-api
+      working-directory: .\aumanager-geo
       
     - name: Build
       run: dotnet build --no-restore --configuration Release
