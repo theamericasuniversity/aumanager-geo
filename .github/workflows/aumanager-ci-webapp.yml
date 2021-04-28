@@ -29,7 +29,7 @@ jobs:
       with:
         files: 'aumanager-geo/appsettings.json'
       env:
-        ConnecServiceDBConnectionString: ${{ secrets.DB_CONNECTION_STRING }}
+        ServiceDBConnectionString: ${{ secrets.DB_CONNECTION_STRING }}
         AzureAd.Instance: ${{ secrets.AZUREAD_INSTANCE }}
         AzureAd.Domain: ${{ secrets.AZUREAD_DOMAIN }}
         AzureAd.TenantId: ${{ secrets.AZUREAD_TENANTID }}
