@@ -62,8 +62,7 @@ jobs:
       - uses: azure/k8s-deploy@v1
         with:
           manifests: |
-            manifests/deployment.yml
-            manifests/service.yml
+            manifests/aumanager-geo-api-deployment.yaml
           images: |
             ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.APP_NAME }}:${{ github.sha }}
           imagepullsecrets: |
