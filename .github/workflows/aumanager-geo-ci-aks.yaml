@@ -36,6 +36,13 @@ jobs:
       - run: |
           docker build . -t ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.APP_NAME }}:${{ github.sha }}
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.APP_NAME }}:${{ github.sha }}
+          
+       # Set the target Azure Kubernetes Service (AKS) cluster. 
+      - uses: azure/aks-set-context@v1
+        with:
+          creds: '${{ secrets.AKS_CREDENTIALS }}'
+          cluster-name: ${{ env.CLUSTER_NAME }}
+          resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
 
       # Create namespace if it doesn't exist
       - run: |
