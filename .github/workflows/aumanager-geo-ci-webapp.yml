@@ -1,4 +1,4 @@
-name: aumanager-ci-webapp
+name: aumanager-geo-ci-webapp
 
 on:
   push:
