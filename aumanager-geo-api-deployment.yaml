@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: aumanager-geo-api
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: aumanager-geo-api
@@ -17,7 +17,6 @@ spec:
       labels:
         app: aumanager-geo-api
     spec:
-      replicas: 3
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
