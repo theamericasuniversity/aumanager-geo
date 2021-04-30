@@ -3,6 +3,10 @@ AU Manager is a fictitious microservice-based application created and utilized b
 
 # Microservice: AUManager - Geo (aumanager-geo)
 
+[![aumanager-geo-ci-aks](https://github.com/theamericasuniversity/aumanager-geo/actions/workflows/aumanager-geo-ci-aks.yaml/badge.svg)](https://github.com/theamericasuniversity/aumanager-geo/actions/workflows/aumanager-geo-ci-aks.yaml)
+
+[![aumanager-geo-ci-webapp](https://github.com/theamericasuniversity/aumanager-geo/actions/workflows/aumanager-geo-ci-webapp.yml/badge.svg)](https://github.com/theamericasuniversity/aumanager-geo/actions/workflows/aumanager-geo-ci-webapp.yml)
+
 "AUManager - Geo" API (RESTFul) implement basic operations related to the geographic aspect of the application: **Countries**, **States** and **Cities**. It is Web API project written in .NET Core 3.1.
 
 ![aumanager-geo Swagger](img/aumanager-geo-swagger.PNG)
