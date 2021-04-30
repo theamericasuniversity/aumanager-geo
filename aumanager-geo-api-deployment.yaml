@@ -17,12 +17,12 @@ spec:
       labels:
         app: aumanager-geo-api
     spec:
+      replicas: 3
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
       - name: aumanager-geo-api
         image: aumanageracr.azurecr.io/aumanager-geo-api:latest
-      - replicas: 3
         ports:
         - containerPort: 80
         resources:
