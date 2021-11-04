@@ -12,11 +12,11 @@ on:
   workflow_dispatch:
 
 env:
-  CLUSTER_NAME: aumanager-cluster
-  CLUSTER_RESOURCE_GROUP: Demo-AUManager
-  NAMESPACE: aumanager-dev
-  SECRET: aumanager-secret
-  APP_NAME: aumanager-geo-api
+  CLUSTER_NAME: au-manager-cluster
+  CLUSTER_RESOURCE_GROUP: CoreResources
+  NAMESPACE: au-manager
+  SECRET: au-manager-secret
+  APP_NAME: au-manager-geo-api
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
