@@ -43,15 +43,15 @@ jobs:
             username: ${{ secrets.ACR_USERNAME }}
             password: ${{ secrets.ACR_PASSWORD }}
         - run: |
-            docker build . -t ${{ secrets.ACR_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
-            docker push ${{ secrets.ACR_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+            docker build . -t ${{ secrets.ACR_LOGIN_SERVER }}/au-manager-geo-api-aci:${{ github.sha }}
+            docker push ${{ secrets.ACR_LOGIN_SERVER }}/au-manager-geo-api-aci:${{ github.sha }}
 
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
             resource-group: ${{ secrets.ACI_RESOURCE_GROUP }}
-            dns-name-label: ${{ secrets.ACI_RESOURCE_GROUP }}${{ github.run_number }}
-            image: ${{ secrets.ACR_LOGIN_SERVER }}/au-manager-geo-api:${{ github.sha }}
+            dns-name-label: au-manager-geo-api-aci
+            image: ${{ secrets.ACR_LOGIN_SERVER }}/au-manager-geo-api-aci:${{ github.sha }}
             registry-login-server: ${{ secrets.ACR_LOGIN_SERVER }}
             registry-username: ${{ secrets.ACR_USERNAME }}
             registry-password: ${{ secrets.ACR_PASSWORD }}
