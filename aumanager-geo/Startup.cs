@@ -49,7 +49,9 @@ namespace aumanager_geo_api
                 });
             });
 
-            services.AddDbContext<GeoContext>();
+            services.AddDbContext<GeoContext>(
+                options => options.UseSqlServer(x => x.MigrationsAssembly("aumanager-geo-infra.Migrations"))
+            );
             services.AddScoped<CountryRepository>();
             services.AddScoped<CityRepository>();
             services.AddScoped<StateRepository>();

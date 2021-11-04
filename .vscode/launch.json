@@ -13,12 +13,19 @@
             "args": [],
             "cwd": "${workspaceFolder}/aumanager-geo",
             "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-            },
+            // "serverReadyAction": {
+            //     "action": "openExternally",
+            //     "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            // },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "AzureAd:Instance": "https://login.microsoftonline.com/",
+                "AzureAd:Domain": "americasuniversity.net",
+                "AzureAd:TenantId": "05d02840-af0d-4434-91a4-9d3ba3654bb0",
+                "AzureAd:ClientId": "https://americasuniversity.net/aumanager-geo",
+                "ServiceDBConnectionString": "Server=tcp:au-sql-server.database.windows.net,1433;Initial Catalog=au-manager-geo-db;Persist Security Info=False;User ID=ausqladmin;Password=AuAdmin@123456;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+                //"AzureAd:ApplicationIdUri": "https://americasuniversity.net/aumanager-geo",
+                //"AzureAd:ClientSecret": "CiZ7Q~FxxdytycyzAe.dhQGK5Uuz6j6ucmZDg"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
