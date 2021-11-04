@@ -1,5 +1,14 @@
-on: [push]
 name: au-manager-ci-aci
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
     build-and-deploy:
@@ -8,6 +17,19 @@ jobs:
         # checkout the repo
         - name: 'Checkout GitHub Action'
           uses: actions/checkout@main
+          
+          #substitute production appsettings entries to appsettings json file
+        - name: App Settings Variable Substitution
+          uses: microsoft/variable-substitution@v1
+          with:
+           files: 'aumanager-geo/appsettings.json'
+          env:
+           ServiceDBConnectionString: ${{ secrets.DB_CONNECTION_STRING }}
+           AzureAd.Instance: ${{ secrets.AZUREAD_INSTANCE }}
+           AzureAd.Domain: ${{ secrets.AZUREAD_DOMAIN }}
+           AzureAd.TenantId: ${{ secrets.AZUREAD_TENANTID }}
+           AzureAd.ClientId: ${{ secrets.AZUREAD_CLIENTID }}
+
           
         - name: 'Login via Azure CLI'
           uses: azure/login@v1
@@ -21,15 +43,15 @@ jobs:
             username: ${{ secrets.ACR_USERNAME }}
             password: ${{ secrets.ACR_PASSWORD }}
         - run: |
-            docker build . -t ${{ secrets.ACR_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
-            docker push ${{ secrets.ACR_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+            docker build . -t ${{ secrets.ACR_LOGIN_SERVER }}/au-manager-geo-api-aci:${{ github.sha }}
+            docker push ${{ secrets.ACR_LOGIN_SERVER }}/au-manager-geo-api-aci:${{ github.sha }}
 
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
             resource-group: ${{ secrets.ACI_RESOURCE_GROUP }}
-            dns-name-label: ${{ secrets.ACI_RESOURCE_GROUP }}${{ github.run_number }}
-            image: ${{ secrets.ACR_LOGIN_SERVER }}/au-manager-geo-api:${{ github.sha }}
+            dns-name-label: au-manager-geo-api-aci
+            image: ${{ secrets.ACR_LOGIN_SERVER }}/au-manager-geo-api-aci:${{ github.sha }}
             registry-login-server: ${{ secrets.ACR_LOGIN_SERVER }}
             registry-username: ${{ secrets.ACR_USERNAME }}
             registry-password: ${{ secrets.ACR_PASSWORD }}
